@@ -8,39 +8,64 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          color: Colors.blueGrey, //expand till screen size
-          padding: const EdgeInsets.fromLTRB(16, 10, 20, 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
+          width: double.infinity,
+          height: double.infinity,
+          color: Colors.blueGrey,
+          child: Stack(
+            alignment: Alignment.center,
             children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
+              Positioned(
+                top: 0,
+                bottom: 0,
+                child: CircleWidget(
                   color: Colors.red,
-                  shape: BoxShape.circle,
+                  height: 250,
+                  width: 250,
                 ),
               ),
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
+              Positioned(
+                top: 0,
+                left: 0,
+                child: CircleWidget(
                   color: Colors.green,
-                  shape: BoxShape.circle,
+                  height: 150,
+                  width: 150,
+                ),
+              ),
+              Positioned(
+                right: MediaQuery.of(context).size.width/2 - (250/2),
+                child: CircleWidget(
+                  color: Colors.blue,
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CircleWidget extends StatelessWidget {
+  final Color color;
+  final double width;
+  final double height;
+
+  const CircleWidget({
+    Key? key,
+    required this.color,
+    this.width = 50.0,
+    this.height = 50.0,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
       ),
     );
   }
