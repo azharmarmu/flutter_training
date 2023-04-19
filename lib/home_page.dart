@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,29 +9,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // page
+      backgroundColor: Colors.black12,
       body: SafeArea(
-        child: Container(
-          height: 300,
-          color: Colors.black12,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              BoxWidget(color: Colors.red),
-              BoxWidget(color: Colors.green),
-              BoxWidget(color: Colors.blue),
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            BoxWidget(color: Colors.blue),
+            BoxWidget(color: Colors.blue),
+            BoxWidget(color: Colors.blue),
+          ],
         ),
-      ),
-      bottomNavigationBar: Container(
-        height: 100,
-        color: Colors.amber,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //anonymous function
-          print('FAB Click');
-        }, // value eqaute
       ),
     );
   }
@@ -50,8 +39,9 @@ class BoxWidget extends StatefulWidget {
 }
 
 class _BoxWidgetState extends State<BoxWidget> {
-  BoxShape shape = BoxShape.rectangle;
   Color? color;
+  BorderRadiusGeometry? borderRadius;
+  BoxBorder? border;
 
   @override
   void initState() {
@@ -61,23 +51,33 @@ class _BoxWidgetState extends State<BoxWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Color> colors = [
+      Colors.brown,
+      Colors.cyan,
+      Color(0xFF06324D),
+      Color(0xFF8A6707),
+    ];
+
     return InkWell(
       onTap: () {
-        //BL
-        color = Colors.amber;
-        shape = BoxShape.circle;
-        setState(() {}); // re-render
-        // make sure ui is rendered
+        color = Colors.white;
+        borderRadius = BorderRadius.circular(10);
+        border = Border.all(
+          color: Colors.red,
+          width: 10,
+        );
+        setState(() {});
       },
       child: Container(
         alignment: Alignment.center,
         height: 50,
         width: 75,
         decoration: BoxDecoration(
-          color: color,
-          shape: shape,
+          color: colors[Random().nextInt(3)],
+          borderRadius: borderRadius,
+          border: border,
         ),
-        child: const Text('Change'),
+        child: Text('${Random().nextInt(10)}'),
       ),
     );
   }
