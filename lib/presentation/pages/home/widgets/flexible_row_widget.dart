@@ -17,6 +17,7 @@ class FlexibleRowWidget extends StatelessWidget {
         ),
         BoxBorderRadiusWidget(color: Colors.red),
         BoxBorderRadiusWidget(color: Colors.blue),
+        BoxBorderRadiusWidget(color: Colors.orange),
       ],
     );
   }
