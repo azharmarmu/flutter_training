@@ -54,7 +54,12 @@ class ButtonCustomWidget extends StatelessWidget {
               },
             ),
             SizedBox(width: 24),
-            NegativeButton(),
+            NegativeButton(
+              text: 'Reject',
+              onTap: () {
+                print('Reject Tapped');
+              },
+            ),
           ],
         ),
         SizedBox(height: 24),
@@ -66,8 +71,14 @@ class ButtonCustomWidget extends StatelessWidget {
                 print('Apply Tapped');
               },
             ),
-            SizedBox(width: 24),
-            NegativeButton(),
+            new SizedBox(width: 24),
+            new NegativeButton(
+              text: 'Cancel',
+              onTap: () {
+                //BL
+                print('Cancel Tapped');
+              },
+            ),
           ],
         ),
       ],

@@ -63,6 +63,30 @@ class HomePage extends StatelessWidget {
               ButtonInBuildWidget(),
               SizedBox(height: 24),
               ButtonCustomWidget(),
+              SizedBox(height: 24),
+
+              SizedBox(
+                height: 400,
+                child: LayoutBuilder( // 400
+                  builder: (
+                    BuildContext ctx,
+                    BoxConstraints constraints,
+                  ) {
+                    print('constraint height: ${constraints.maxHeight}');
+                    print('infinity: ${double.infinity}'); //infinity
+                    print(
+                        'MediaQuery - build: ${MediaQuery.of(context).size.height}'); //852
+                    print('MediaQuery - LB: ${MediaQuery.of(ctx).size.height}'); // 852
+                    return Container(
+                      alignment: Alignment.center,
+                      width: 300,
+                      height: MediaQuery.of(context).size.height, //infinity - 400
+                      color: Colors.cyan,
+                      child: Text('Layout Builder Example'),
+                    );
+                  },
+                ),
+              ),
               SizedBox(height: 40),
             ],
           ),
