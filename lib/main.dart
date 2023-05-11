@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-
-import 'my_app.dart';
+import 'package:flutter_training/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePage(), //root level page/widget
+    );
+  }
 }
